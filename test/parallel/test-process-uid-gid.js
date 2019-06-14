@@ -74,7 +74,12 @@ const oldgid = process.getgid();
 try {
   process.setgid('nobody');
 } catch (err) {
-  if (err.message !== 'setgid group id does not exist') {
+<<<<<<< HEAD
+  if (err.message !== 'setgid group id does not exist' && err.code !== 'ERR_UNKNOWN_CREDENTIAL') {
+=======
+  if (err.message !== 'setgid group id does not exist' &&
+      err.message !== 'Group identifier does not exist') {
+>>>>>>> 0442e60902... Changed error detection from checking code to checking message
     throw err;
   }
   process.setgid('nogroup');
